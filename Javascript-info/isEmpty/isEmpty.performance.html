@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>isEmpty</title>
+</head>
+<body>
+  <script>
+    // fastest
+    function isEmpty(obj) {
+      for (let key in obj) {
+        return false;
+      }
+      return true;
+    }
+
+    var t0 = performance.now()
+    for (let i = 0; i < 1000000; i++) {
+      let users = {}
+      isEmpty(users);
+    }
+    var t1 = performance.now()
+    console.log("Call to isEmptyLoop took " + (t1 - t0) + " milliseconds.")
+  </script>
+  <script>
+    // slowest
+    function isEmpty(obj) {
+      return JSON.stringify(obj) === "{}";
+    }
+
+    var t0 = performance.now()
+    for (let i = 0; i < 1000000; i++) {
+      let users = {}
+      isEmpty(users);
+    }
+    var t1 = performance.now()
+    console.log("Call to isEmptyJSON took " + (t1 - t0) + " milliseconds.")
+  </script>
+  <script>
+    // fast
+    function isEmpty(obj) {
+      return !Object.keys(obj).length;
+    }
+
+    var t0 = performance.now()
+    for (let i = 0; i < 1000000; i++) {
+      let users = {}
+      isEmpty(users);
+    }
+    var t1 = performance.now()
+    console.log("Call to isEmptyObjectKeys took " + (t1 - t0) + " milliseconds.")
+  </script>
+</body>
+</html>

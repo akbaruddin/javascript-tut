@@ -1,0 +1,16 @@
+{
+  "name": "Javascript-info",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --maxWorkers=4"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "microtime": "^3.0.0"
+  }
+}
